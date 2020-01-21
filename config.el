@@ -57,3 +57,4 @@
         company-idle-delay 0.08))
 
 (load! "+bindings")
+(load! "+evil")
