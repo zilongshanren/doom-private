@@ -31,11 +31,19 @@
 (global-set-key (kbd "C-s-h") 'mark-defun)
 
 (global-set-key (kbd "s-l") 'goto-line)
-;; (global-set-key (kbd "s-s") 'save-buffer)
 (global-set-key (kbd "s-d") 'zilongshanren/my-mc-mark-next-like-this)
 (global-set-key (kbd "<f5>") 'zilongshanren/run-current-file)
 
 
+(map! :leader
+  "0" 'winum-select-window-0-or-10
+  "1" 'winum-select-window-1
+  "2" 'winum-select-window-2
+  "3" 'winum-select-window-3
+  "4" 'winum-select-window-4
+  "8" 'split-window-below
+  "9" 'split-window-right
+  )
 
 
 (map! (:map override
@@ -46,6 +54,15 @@
 
 
       :nmv "hdk" #'describe-key
+      :nmv "TAB" #'spacemacs/alternate-buffer
+
+      (:prefix "f"
+        "j" #'dired-jump)
+
+      (:prefix "w"
+        "/" #'evil-window-vsplit
+        "-" #'evil-window-split
+        "m" #'doom/window-maximize-buffer)
 
       ;; (:prefix-map ("f" . "file")
       ;;   "ed" #'doom/open-private-config)
