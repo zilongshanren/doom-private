@@ -34,6 +34,7 @@
 (global-set-key (kbd "s-d") 'zilongshanren/my-mc-mark-next-like-this)
 (global-set-key (kbd "<f5>") 'zilongshanren/run-current-file)
 
+(setq doom-localleader-key ",")
 
 (map! :leader
   "0" 'winum-select-window-0-or-10
