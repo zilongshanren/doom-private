@@ -54,16 +54,21 @@
 
 
       :nmv "hdk" #'describe-key
+      :nmv "hdf" #'describe-function
       :nmv "TAB" #'spacemacs/alternate-buffer
 
       (:prefix "f"
         "j" #'dired-jump)
 
+      (:prefix "e"
+        "l" #'flycheck-list-errors
+        "n" #'next-error
+        "p" #'previous-error)
+
+      (:prefix "g"
+        "s" #'magit-status)
+
       (:prefix "w"
         "/" #'evil-window-vsplit
         "-" #'evil-window-split
-        "m" #'doom/window-maximize-buffer)
-
-      ;; (:prefix-map ("f" . "file")
-      ;;   "ed" #'doom/open-private-config)
-      )
+        "m" #'doom/window-maximize-buffer))
