@@ -47,7 +47,8 @@
 
 
 (map! (:map override
-        "C-s" #'swiper))
+        "C-s" #'swiper
+        "s-x" #'kill-region))
 
 (map! :leader
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
@@ -56,6 +57,7 @@
       :nmv "hdf" #'describe-function
       :nmv "hdv" #'describe-variable
       :nmv "TAB" #'spacemacs/alternate-buffer
+      :n "v" #'er/expand-region
 
       (:prefix "r"
         "i" #'ivy-resume)
@@ -68,6 +70,7 @@
         "n" #'next-error
         "p" #'previous-error)
 
+
       (:prefix "n"
         "l" #'evil-ex-nohighlight)
 
@@ -78,3 +81,20 @@
         "/" #'evil-window-vsplit
         "-" #'evil-window-split
         "m" #'doom/window-maximize-buffer))
+
+(map! :map dired-mode-map
+      :ng "o" #'dired-find-file-other-window
+  "C-k" 'zilongshanren/dired-up-directory
+  "<RET>" 'dired-find-alternate-file
+  "E" 'dired-toggle-read-only
+  "C" 'dired-do-copy
+  "<mouse-2>" 'my-dired-find-file
+  "`" 'dired-open-term
+  "p" 'peep-dired-prev-file
+  "n" 'peep-dired-next-file
+  ;; "gr" 'revert-buffer
+  "z" 'dired-get-size
+  "c" 'dired-copy-file-here
+  "J" 'counsel-find-file
+  "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
+  ")" 'dired-omit-mode)
