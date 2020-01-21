@@ -63,8 +63,10 @@
       (:prefix "r"
         "i" #'ivy-resume)
 
-      (:prefix "f"
-        "j" #'dired-jump)
+      (:prefix-map ("f" . "file")
+        "j" #'dired-jump
+        (:prefix-map ("e" . "env")
+          "d" 'doom/goto-private-config-file))
 
       (:prefix "e"
         "l" #'flycheck-list-errors
@@ -83,19 +85,20 @@
         "-" #'evil-window-split
         "m" #'doom/window-maximize-buffer))
 
-(map! :map dired-mode-map
-      :ng "o" #'dired-find-file-other-window
-  "C-k" 'zilongshanren/dired-up-directory
-  "<RET>" 'dired-find-alternate-file
-  "E" 'dired-toggle-read-only
-  "C" 'dired-do-copy
-  "<mouse-2>" 'my-dired-find-file
-  "`" 'dired-open-term
-  "p" 'peep-dired-prev-file
-  "n" 'peep-dired-next-file
-  ;; "gr" 'revert-buffer
-  "z" 'dired-get-size
-  "c" 'dired-copy-file-here
-  "J" 'counsel-find-file
-  "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
-  ")" 'dired-omit-mode)
+(after! dired
+  (map! :map dired-mode-map
+        :ng "o" #'dired-find-file-other-window
+        :ng "C-k" 'zilongshanren/dired-up-directory
+        :ng "<RET>" 'dired-find-alternate-file
+        :ng "E" 'dired-toggle-read-only
+        :ng "C" 'dired-do-copy
+        :ng "<mouse-2>" 'my-dired-find-file
+        :ng "`" 'dired-open-term
+        :ng "p" 'peep-dired-prev-file
+        :ng "n" 'peep-dired-next-file
+        ;; "gr" 'revert-buffer
+        :ng "z" 'dired-get-size
+        :ng "c" 'dired-copy-file-here
+        :ng "J" 'counsel-find-file
+        :ng "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
+        :ng ")" 'dired-omit-mode))

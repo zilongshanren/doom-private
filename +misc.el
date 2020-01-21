@@ -11,3 +11,10 @@
 ;;
 ;;; License: GPLv3
 
+
+;; These are used for a number of things, particularly for GPG configuration,
+;; some email clients, file templates and snippets.
+(setq user-full-name "zilongshanren"
+      user-mail-address "guanghui8827@gmail.com")
+
+(global-flycheck-mode -1)
