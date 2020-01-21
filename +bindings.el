@@ -52,10 +52,13 @@
 (map! :leader
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
 
-
       :nmv "hdk" #'describe-key
       :nmv "hdf" #'describe-function
+      :nmv "hdv" #'describe-variable
       :nmv "TAB" #'spacemacs/alternate-buffer
+
+      (:prefix "r"
+        "i" #'ivy-resume)
 
       (:prefix "f"
         "j" #'dired-jump)
@@ -64,6 +67,9 @@
         "l" #'flycheck-list-errors
         "n" #'next-error
         "p" #'previous-error)
+
+      (:prefix "n"
+        "l" #'evil-ex-nohighlight)
 
       (:prefix "g"
         "s" #'magit-status)

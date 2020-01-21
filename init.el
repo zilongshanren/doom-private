@@ -21,15 +21,14 @@
        :completion
        (company           ; the ultimate code completion backend
         +auto               ; as-you-type code completion
-        +childframe      ; a nicer company UI (Emacs 26+ only)
         )
        ;;(helm              ; the *other* search engine for love and life
        ;;+fuzzy)            ; enable fuzzy search backend for helm
        ;;ido                ; the other *other* search engine...
-       (ivy               ; a search engine for love and life
+       (ivy                             ; a search engine for love and life
         +icons
         +prescient
-        +childframe)
+        )
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -87,8 +86,7 @@
        vterm             ; another terminals in
 
        :checkers
-       (syntax
-        +childframe)     ; tasing you for every semicolon you forget
+       syntax     ; tasing you for every semicolon you forget
        spell             ; tasing you for misspelling mispelling
        grammar           ; tasing grammar mistake every you make
 
@@ -182,6 +180,7 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        web               ; the tubes
 
+
        :email
        ;;(mu4e +gmail)
        ;;notmuch
@@ -198,6 +197,7 @@
        (default +bindings +snippets +smartparens)
 
        :private
+       better-defaults
        )
 
 (setq custom-file (expand-file-name "custom.el" doom-local-dir))
