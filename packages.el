@@ -53,4 +53,3 @@
 
 (package! irony :disable t)
 (package! rtags :disable t)
-(package! evil-collection :disable t)
