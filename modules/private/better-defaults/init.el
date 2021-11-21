@@ -38,7 +38,9 @@
 (setq-default fill-column 80)
 
 ;; prevent dired window press o to split into three column
-(setq-default split-width-threshold 200)
+;; (setq-default split-width-threshold 200)
+(setq split-height-threshold nil)
+(setq split-width-threshold 160)
 
 (setq recenter-positions '(top middle bottom))
 ;; delete the selection with a key press

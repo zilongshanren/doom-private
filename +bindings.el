@@ -34,7 +34,6 @@
 (global-set-key (kbd "s-d") 'zilongshanren/my-mc-mark-next-like-this)
 (global-set-key (kbd "<f5>") 'zilongshanren/run-current-file)
 
-(setq doom-localleader-key ",")
 
 (map! :leader
   "0" 'winum-select-window-0-or-10
@@ -48,7 +47,7 @@
 
 
 (map! (:map override
-        "C-s" #'swiper
+        "C-s" #'+default/search-buffer
         "s-x" #'kill-region))
 
 (map! :leader
@@ -61,12 +60,13 @@
       :n "v" #'er/expand-region
 
       (:prefix "r"
-        "i" #'ivy-resume)
+       "i" #'vertico-repeat)
 
       (:prefix-map ("f" . "file")
         "j" #'dired-jump
         (:prefix-map ("e" . "env")
-          "d" 'doom/goto-private-config-file))
+         "d" 'doom/goto-private-config-file
+         "i" 'doom/find-file-in-emacsd))
 
       (:prefix "e"
         "l" #'flycheck-list-errors
@@ -85,20 +85,19 @@
         "-" #'evil-window-split
         "m" #'doom/window-maximize-buffer))
 
-(after! dired
-  (map! :map dired-mode-map
-        :ng "o" #'dired-find-file-other-window
-        :ng "C-k" 'zilongshanren/dired-up-directory
-        :ng "<RET>" 'dired-find-alternate-file
-        :ng "E" 'dired-toggle-read-only
-        :ng "C" 'dired-do-copy
-        :ng "<mouse-2>" 'my-dired-find-file
-        :ng "`" 'dired-open-term
-        :ng "p" 'peep-dired-prev-file
-        :ng "n" 'peep-dired-next-file
-        ;; "gr" 'revert-buffer
-        :ng "z" 'dired-get-size
-        :ng "c" 'dired-copy-file-here
-        :ng "J" 'counsel-find-file
-        :ng "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
-        :ng ")" 'dired-omit-mode))
+(map! :map dired-mode-map
+      :ng "o" #'dired-find-file-other-window
+      :ng "C-k" 'zilongshanren/dired-up-directory
+      :ng "<RET>" 'dired-find-alternate-file
+      :ng "E" 'dired-toggle-read-only
+      :ng "C" 'dired-do-copy
+      :ng "<mouse-2>" 'my-dired-find-file
+      :ng "`" 'dired-open-term
+      :ng "p" 'peep-dired-prev-file
+      :ng "n" 'peep-dired-next-file
+      ;; "gr" 'revert-buffer
+      :ng "z" 'dired-get-size
+      :ng "c" 'dired-copy-file-here
+      :ng "J" 'counsel-find-file
+      :ng "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
+      :ng ")" 'dired-omit-mode)
