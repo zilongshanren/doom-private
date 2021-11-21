@@ -51,7 +51,7 @@
         "s-x" #'kill-region))
 
 (map! :leader
-      :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
+      :desc  :nmv "SPC" #'execute-extended-command
 
       :nmv "hdk" #'describe-key
       :nmv "hdf" #'describe-function
@@ -85,19 +85,20 @@
         "-" #'evil-window-split
         "m" #'doom/window-maximize-buffer))
 
-(map! :map dired-mode-map
-      :ng "o" #'dired-find-file-other-window
-      :ng "C-k" 'zilongshanren/dired-up-directory
-      :ng "<RET>" 'dired-find-alternate-file
-      :ng "E" 'dired-toggle-read-only
-      :ng "C" 'dired-do-copy
-      :ng "<mouse-2>" 'my-dired-find-file
-      :ng "`" 'dired-open-term
-      :ng "p" 'peep-dired-prev-file
-      :ng "n" 'peep-dired-next-file
-      ;; "gr" 'revert-buffer
-      :ng "z" 'dired-get-size
-      :ng "c" 'dired-copy-file-here
-      :ng "J" 'counsel-find-file
-      :ng "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
-      :ng ")" 'dired-omit-mode)
+(map! :after dired
+      (:map dired-mode-map
+       :ne "o" #'dired-find-file-other-window
+       :ne "C-k" 'zilongshanren/dired-up-directory
+       :ne "<RET>" 'dired-find-alternate-file
+       :ne "E" 'dired-toggle-read-only
+       :ne "C" 'dired-do-copy
+       :ne "<mouse-2>" 'my-dired-find-file
+       :ne "`" 'dired-open-term
+       :ne "p" 'peep-dired-prev-file
+       :ne "n" 'peep-dired-next-file
+       ;;e"gr" 'revert-buffer
+       :ne "z" 'dired-get-size
+       :ne "c" 'dired-copy-file-here
+       :ne "J" 'counsel-find-file
+       :ne "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
+       :ne ")" 'dired-omit-mode))

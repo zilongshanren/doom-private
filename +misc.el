@@ -18,3 +18,14 @@
       user-mail-address "guanghui8827@gmail.com")
 
 (global-flycheck-mode -1)
+
+;; (add-hook 'emacs-lisp-mode-hook #'(lambda ()
+;;                                     (flycheck-mode -1)))
+;; (add-hook! emacs-lisp-mode
+;;            #'(lambda () (flycheck-mode -1)))
+
+;; (add-hook! emacs-lisp-mode
+;;   (flycheck-mode -1))
+
+(add-hook! 'emacs-lisp-mode-hook
+  (flycheck-mode -1))

@@ -18,6 +18,6 @@
 (setq doom-theme 'doom-solarized-light)
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type 'relative)
 
 (toggle-frame-maximized)

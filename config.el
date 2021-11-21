@@ -8,7 +8,7 @@
 (load! "+misc")
 
 ;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/org/")
+(setq org-directory "~/org-notes/")
 
 
 
