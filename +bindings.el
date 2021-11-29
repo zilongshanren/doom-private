@@ -62,6 +62,9 @@
       (:prefix "r"
        "i" #'vertico-repeat)
 
+      (:prefix "b"
+       "h" #'+doom-dashboard/open)
+
       (:prefix-map ("f" . "file")
         "j" #'dired-jump
         (:prefix-map ("e" . "env")
