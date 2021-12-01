@@ -62,31 +62,35 @@
       (:prefix "r"
        "i" #'vertico-repeat)
 
+      (:prefix "h"
+       "h" 'zilongshanren/highlight-dwim
+       "c" 'zilongshanren/clearn-highlight)
+
       (:prefix "b"
        "h" #'+doom-dashboard/open)
 
       (:prefix-map ("f" . "file")
-        "j" #'dired-jump
-        (:prefix-map ("e" . "env")
-         "d" 'doom/goto-private-config-file
-         "i" 'doom/find-file-in-emacsd))
+       "j" #'dired-jump
+       (:prefix-map ("e" . "env")
+        "d" 'doom/goto-private-config-file
+        "i" 'doom/find-file-in-emacsd))
 
       (:prefix "e"
-        "l" #'flycheck-list-errors
-        "n" #'next-error
-        "p" #'previous-error)
+       "l" #'flycheck-list-errors
+       "n" #'next-error
+       "p" #'previous-error)
 
 
       (:prefix "n"
-        "l" #'evil-ex-nohighlight)
+       "l" #'evil-ex-nohighlight)
 
       (:prefix "g"
-        "s" #'magit-status)
+       "s" #'magit-status)
 
       (:prefix "w"
-        "/" #'evil-window-vsplit
-        "-" #'evil-window-split
-        "m" #'doom/window-maximize-buffer))
+       "/" #'evil-window-vsplit
+       "-" #'evil-window-split
+       "m" #'doom/window-maximize-buffer))
 
 (map! :after dired
       (:map dired-mode-map

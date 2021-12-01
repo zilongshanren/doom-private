@@ -53,3 +53,7 @@
 
 (package! irony :disable t)
 (package! rtags :disable t)
+
+
+(package! highlight-global :recipe (:host github :repo "glen-dai/highlight-global"))
+(package! symbol-overlay)

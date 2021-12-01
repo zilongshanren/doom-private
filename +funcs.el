@@ -235,7 +235,7 @@ open and unsaved."
       (progn
         (highlight-frame-toggle)
         (deactivate-mark))
-    (spacemacs/symbol-overlay)))
+    (symbol-overlay-put)))
 
 (defun zilongshanren/clearn-highlight ()
     (interactive)
