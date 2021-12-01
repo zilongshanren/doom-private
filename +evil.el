@@ -10,8 +10,9 @@
     ;; (adjust-major-mode-keymap-with-evil "git-timemachine")
     ;; (adjust-major-mode-keymap-with-evil "tabulated-list")
 
-    ;; (define-key evil-visual-state-map "p" 'evil-paste-after-from-0)
+    (define-key evil-visual-state-map "p" 'evil-paste-after-from-0)
     (define-key evil-insert-state-map (kbd "C-r") 'evil-paste-from-register)
+    (define-key evil-insert-state-map (kbd "C-;") 'flyspell-correct-previous)
 
     ;; ;; change evil initial mode state
                                         ;  (loop for (mode . state) in

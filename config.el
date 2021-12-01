@@ -11,8 +11,7 @@
 (load! "+evil")
 (load! "+org")
 
-(use-package expand-region
-  :defer
+(after! expand-region
   (defadvice er/prepare-for-more-expansions-internal
       (around helm-ag/prepare-for-more-expansions-internal activate)
     ad-do-it

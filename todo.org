@@ -1,0 +1,6 @@
+#+TITLE: Todo
+** migrate package
+- [ ] visual-regexp
+- [ ] visual-regexp-steroids
+- [ ] discover-my-major
+- [X] flyspell-correct

@@ -47,5 +47,4 @@
 
 (use-package  symbol-overlay
   :defer
-  :init
   )
