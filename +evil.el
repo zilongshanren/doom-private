@@ -14,10 +14,10 @@
     (define-key evil-insert-state-map (kbd "C-r") 'evil-paste-from-register)
 
     ;; ;; change evil initial mode state
-  ;  (loop for (mode . state) in
-  ;        '((shell-mode . normal)
-  ;          (minibuffer-inactive-mode . emacs))
-  ;        do (evil-set-initial-state mode state))
+                                        ;  (loop for (mode . state) in
+                                        ;        '((shell-mode . normal)
+                                        ;          (minibuffer-inactive-mode . emacs))
+                                        ;        do (evil-set-initial-state mode state))
 
     ;;mimic "nzz" behaviou in vim
     (defadvice evil-search-next (after advice-for-evil-search-next activate)
@@ -54,8 +54,11 @@
 
     (define-key evil-emacs-state-map (kbd "s-f") 'forward-word)
     (define-key evil-insert-state-map (kbd "s-f") 'forward-word)
+    (define-key evil-insert-state-map (kbd "C-w") 'evil-delete-backward-word)
     (define-key evil-emacs-state-map (kbd "s-b") 'backward-word)
     (define-key evil-insert-state-map (kbd "s-b") 'backward-word)
+
+
 
     (define-key evil-ex-completion-map "\C-a" 'move-beginning-of-line)
     (define-key evil-ex-completion-map "\C-b" 'backward-char)
@@ -89,3 +92,28 @@
           evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))
     (setq evil-insert-state-cursor '("chartreuse3" box))
     (define-key evil-insert-state-map (kbd "C-z") 'evil-emacs-state)))
+
+;; Utility functions
+(defun bb/define-key (keymap &rest bindings)
+  (declare (indent 1))
+  (while bindings
+    (define-key keymap (pop bindings) (pop bindings))))
+
+(define-key evil-normal-state-map (kbd "-") nil)
+
+(bb/define-key evil-normal-state-map
+  "+" 'evil-numbers/inc-at-pt
+  "-" 'evil-numbers/dec-at-pt
+  "\\" 'evil-repeat-find-char-reverse
+  (kbd "DEL") 'evil-repeat-find-char-reverse
+  "[s" (lambda (n) (interactive "p") (dotimes (c n nil) (insert " ")))
+  "]s" (lambda (n) (interactive "p")
+         (forward-char) (dotimes (c n nil) (insert " ")) (backward-char (1+ n))))
+
+(with-eval-after-load 'company
+  (progn
+    (bb/define-key company-active-map
+      (kbd "C-w") 'evil-delete-backward-word)
+
+    (bb/define-key company-active-map
+      (kbd "s-w") 'company-show-location)))
