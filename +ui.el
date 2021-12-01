@@ -21,3 +21,17 @@
 (setq display-line-numbers-type 'relative)
 
 (toggle-frame-maximized)
+
+(when IS-MAC
+  (setq ns-pop-up-frames nil))
+
+(global-prettify-symbols-mode 1)
+(setq-default fill-column 80)
+
+;; change evil initial mode state
+(menu-bar-mode t)
+
+(electric-pair-mode t)
+;; https://www.reddit.com/r/emacs/comments/4xhxfw/how_to_tune_the_behavior_of_eletricpairmode/
+(setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
+(show-paren-mode t)
