@@ -56,8 +56,6 @@
   :defer t
     :init
     (progn
-      (spacemacs/set-leader-keys (kbd "mhm") 'discover-my-major)
       (map! :leader
             (:prefix "m" :desc "discover major key and action"
-             "hm" #'discover-my-major))
-      (evilified-state-evilify makey-key-mode makey-key-mode-get-key-map)))
+             "hm" #'discover-my-major))))

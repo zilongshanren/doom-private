@@ -14,11 +14,8 @@
     (define-key evil-insert-state-map (kbd "C-r") 'evil-paste-from-register)
     (define-key evil-insert-state-map (kbd "C-;") 'flyspell-correct-previous)
 
-    ;; ;; change evil initial mode state
-                                        ;  (loop for (mode . state) in
-                                        ;        '((shell-mode . normal)
-                                        ;          (minibuffer-inactive-mode . emacs))
-                                        ;        do (evil-set-initial-state mode state))
+    (set-evil-initial-state! 'minibufffer-inactive-mode 'emacs)
+    (set-evil-initial-state! 'makey-key-mode 'emacs)
 
     ;;mimic "nzz" behaviou in vim
     (defadvice evil-search-next (after advice-for-evil-search-next activate)

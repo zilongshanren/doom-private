@@ -51,18 +51,20 @@
         "s-x" #'kill-region))
 
 (map! :leader
-      :desc  :nmv "SPC" #'execute-extended-command
+      :desc "open M-x" "SPC" #'execute-extended-command
+      )
 
-      :nmv "hdk" #'describe-key
-      :nmv "hdf" #'describe-function
-      :nmv "hdv" #'describe-variable
-      :nmv "TAB" #'spacemacs/alternate-buffer
-      :n "v" #'er/expand-region
+(map! :leader
+      "TAB" #'spacemacs/alternate-buffer
+      "v" #'er/expand-region
 
       (:prefix "r"
        "i" #'vertico-repeat)
 
       (:prefix "h"
+       "dk" 'describe-key
+       "df"  'describe-function
+       "dv" 'describe-variable
        "h" 'zilongshanren/highlight-dwim
        "c" 'zilongshanren/clearn-highlight)
 
