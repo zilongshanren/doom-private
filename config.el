@@ -11,3 +11,5 @@
 (load! "+evil")
 (load! "+org")
 (load! "+tools")
+
+(setq doom-localleader-key ",")

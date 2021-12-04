@@ -179,11 +179,19 @@
       (insert output-string))
     output-string))
 
-(add-hook 'org-agenda-mode-hook 'org-super-agenda-mode)
+
 
 (use-package! org-super-agenda
-  :defer
+  :after org-agenda
   :init
+  (map! :map org-agenda-keymap "j" #'org-agenda-next-line)
+  (map! :map org-agenda-mode-map "j" #'org-agenda-next-line)
+  (map! :map org-super-agenda-header-map "j" #'org-agenda-next-line)
+  (map! :map org-agenda-keymap "k" #'org-agenda-previous-line)
+  (map! :map org-agenda-mode-map "k" #'org-agenda-previous-line)
+  (map! :map org-super-agenda-header-map "k" #'org-agenda-previous-line)
+
+
   (setq org-super-agenda-groups
         '((:name "Important"
            :priority "A")
@@ -192,10 +200,11 @@
           (:name "Next Items"
            :tag ("NEXT" "outbox"))
           (:priority<= "B"
-           :scheduled future))))
+           :scheduled future)))
+  :config
+  (org-super-agenda-mode))
 
-(after! org-super-agenda-mode
-  (evil-add-hjkl-bindings org-super-agenda-header-map 'emacs))
+
 
 ;; (after! org-superstar
 ;;     (setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭"))
@@ -215,7 +224,10 @@
     (setq org-agenda-dir "~/org-notes/")
     (setq deft-dir  "~/org-notes/")
 
-
+    ;; keybindings
+    (map! :map org-agenda-mode-map
+          :localleader
+          "d s" 'org-schedule)
 
     ;; https://emacs-china.org/t/ox-hugo-auto-fill-mode-markdown/9547/4
     (defadvice org-hugo-paragraph (before org-hugo-paragraph-advice
@@ -610,8 +622,6 @@ object (e.g., within a comment).  In these case, you need to use
 
     ;; C-n for the next org agenda item
     (define-key org-agenda-mode-map (kbd "C-p") 'org-agenda-previous-item)
-    (evil-add-hjkl-bindings org-agenda-mode-map 'emacs)
-    (evil-add-hjkl-bindings org-agenda-keymap 'emacs)
 
 
     (with-eval-after-load 'org-agenda

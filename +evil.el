@@ -17,6 +17,7 @@
     (set-evil-initial-state! 'minibufffer-inactive-mode 'emacs)
     (set-evil-initial-state! 'makey-key-mode 'emacs)
     (set-evil-initial-state! 'prodigy-mode 'emacs)
+    (set-evil-initial-state! 'org-agenda-mode 'normal)
 
     ;;mimic "nzz" behaviou in vim
     (defadvice evil-search-next (after advice-for-evil-search-next activate)
