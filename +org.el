@@ -192,13 +192,14 @@
           (:name "Next Items"
            :tag ("NEXT" "outbox"))
           (:priority<= "B"
-           :scheduled future)))
-  :config
+           :scheduled future))))
+
+(after! org-super-agenda-mode
   (evil-add-hjkl-bindings org-super-agenda-header-map 'emacs))
 
-(after! org-superstar
-    (setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭"))
-    (setq org-ellipsis " ▼ "))
+;; (after! org-superstar
+;;     (setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭"))
+;;     (setq org-ellipsis " ▼ "))
 
 (after! org
   (progn
@@ -587,7 +588,14 @@ object (e.g., within a comment).  In these case, you need to use
        (C . t)
        (ditaa . t)))
 
-
+    (progn
+      (require 'cal-china-x)
+      (setq mark-holidays-in-calendar t)
+      (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
+      (setq cal-china-x-general-holidays '((holiday-lunar 1 15 "元宵节")))
+      (setq calendar-holidays
+            (append cal-china-x-important-holidays
+                    cal-china-x-general-holidays)))
     (require 'ox-md nil t)
 
     ;; define the refile targets
