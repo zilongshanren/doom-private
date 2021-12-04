@@ -36,6 +36,7 @@
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 (show-paren-mode t)
 
+
 (use-package highlight-global
   :init
   (progn
