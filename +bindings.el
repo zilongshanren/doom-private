@@ -68,6 +68,9 @@
        "h" 'zilongshanren/highlight-dwim
        "c" 'zilongshanren/clearn-highlight)
 
+      (:prefix "o"
+       "o" #'zilongshanren/helm-hotspots)
+
       (:prefix "b"
        "h" #'+doom-dashboard/open)
 

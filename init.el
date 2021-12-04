@@ -22,8 +22,8 @@
        (company                         ; the ultimate code completion backend
         +childframe
         )
-       ;;(helm              ; the *other* search engine for love and life
-       ;;+fuzzy)            ; enable fuzzy search backend for helm
+       ;; (helm              ; the *other* search engine for love and life
+       ;; +fuzzy)            ; enable fuzzy search backend for helm
        ;;ido                ; the other *other* search engine...
        (vertico
         +icons)                          ; the search engine of the future
@@ -107,7 +107,7 @@
        make                   ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        ;; pdf               ; pdf enhancements
-       ;; prodigy
+       prodigy
                                         ; FIXME managing external services & code builders
        rgb                              ; creating color strings
        ;;terraform         ; infrastructure as code

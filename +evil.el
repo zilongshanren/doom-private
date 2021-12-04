@@ -16,6 +16,7 @@
 
     (set-evil-initial-state! 'minibufffer-inactive-mode 'emacs)
     (set-evil-initial-state! 'makey-key-mode 'emacs)
+    (set-evil-initial-state! 'prodigy-mode 'emacs)
 
     ;;mimic "nzz" behaviou in vim
     (defadvice evil-search-next (after advice-for-evil-search-next activate)
@@ -73,6 +74,7 @@
 
 
     ;; in spacemacs, we always use evilify miscro state
+    (evil-add-hjkl-bindings prodigy-mode-map 'emacs)
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
     ;; Don't move back the cursor one position when exiting insert mode
     (setq evil-move-cursor-back nil)

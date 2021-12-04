@@ -109,3 +109,41 @@
     (setq calendar-holidays
           (append cal-china-x-important-holidays
                   cal-china-x-general-holidays))))
+
+(use-package! helm
+  :defer
+  (map! :map helm-map
+        "C-j" 'helm-next-line
+        "C-k" 'helm-previous-line))
+
+(after! prodigy
+  (progn
+    (map! :map prodigy-mode-map
+          "H" 'prodigy-display-process)
+
+    ;; define service
+    (prodigy-define-service
+      :name "Hugo Server"
+      :command "hugo"
+      :args '("server" "-D" "--navigateToChanged")
+      :cwd blog-admin-dir
+      :tags '(hugo server)
+      :kill-signal 'sigkill
+      :kill-process-buffer-on-stop t)
+
+    (prodigy-define-service
+      :name "hugo Deploy"
+      :command "bash"
+      :args '("./deploy.sh" )
+      :cwd blog-admin-dir
+      :tags '(hugo deploy)
+      :kill-signal 'sigkill
+      :kill-process-buffer-on-stop t)
+
+    ;; (defun refresh-chrome-current-tab (beg end length-before)
+    ;;   (call-interactively 'zilongshanren/browser-refresh--chrome-applescript))
+    ;; ;; add watch for prodigy-view-mode buffer change event
+    ;; (add-hook 'prodigy-view-mode-hook
+    ;;           #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab)))
+
+    ))

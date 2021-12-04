@@ -9,6 +9,8 @@
 ;;
 ;;; License: GPLv3
 
+(defvar blog-admin-dir ""
+      "blog-admin files location")
 
 (require 'cl-lib)
 
@@ -171,7 +173,7 @@
       (insert output-string))
     output-string))
 
-
+(add-hook 'org-agenda-mode-hook 'org-super-agenda-mode)
 
 (use-package! org-super-agenda
   :defer
@@ -185,12 +187,13 @@
            :tag ("NEXT" "outbox"))
           (:priority<= "B"
            :scheduled future)))
+  :config
+  (evil-add-hjkl-bindings org-super-agenda-header-map 'emacs))
 
-  (add-hook 'org-mode-hook 'org-super-agenda-mode))
-
-(after! org-superstart
+(after! org-superstar
     (setq org-superstar-headline-bullets-list '("☰" "☷" "☯" "☭"))
     (setq org-ellipsis " ▼ "))
+
 (after! org
   (progn
     ;; If you intend to use org, it is recommended you change this!
@@ -202,8 +205,6 @@
     (defvar deft-dir ""
       "deft org files locaiton")
 
-    (defvar blog-admin-dir ""
-      "blog-admin files location")
 
     (if IS-WINDOWS
         (setq
@@ -602,6 +603,7 @@ object (e.g., within a comment).  In these case, you need to use
     ;; C-n for the next org agenda item
     (define-key org-agenda-mode-map (kbd "C-p") 'org-agenda-previous-item)
     (evil-add-hjkl-bindings org-agenda-mode-map 'emacs)
+    (evil-add-hjkl-bindings org-agenda-keymap 'emacs)
 
 
     (with-eval-after-load 'org-agenda
