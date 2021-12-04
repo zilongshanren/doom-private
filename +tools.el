@@ -41,3 +41,23 @@
                 '+default/search-buffer)))
        new-bindings)
       (setq ad-return-value (cons new-msg new-bindings)))))
+
+(use-package! visual-regexp
+  :commands (vr/replace vr/query-replace))
+
+(use-package! visual-regexp-steroids
+    :commands (vr/select-replace vr/select-query-replace)
+    :init
+    (progn
+      (define-key global-map (kbd "C-c r") 'vr/replace)
+      (define-key global-map (kbd "C-c q") 'vr/query-replace)))
+
+(use-package! discover-my-major
+  :defer t
+    :init
+    (progn
+      (spacemacs/set-leader-keys (kbd "mhm") 'discover-my-major)
+      (map! :leader
+            (:prefix "m" :desc "discover major key and action"
+             "hm" #'discover-my-major))
+      (evilified-state-evilify makey-key-mode makey-key-mode-get-key-map)))

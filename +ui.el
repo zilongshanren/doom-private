@@ -37,7 +37,7 @@
 (show-paren-mode t)
 
 
-(use-package highlight-global
+(use-package! highlight-global
   :init
   (progn
     (setq-default highlight-faces
@@ -46,6 +46,6 @@
                     ('hi-pink . 0)
                     ('hi-blue-b . 0)))))
 
-(use-package  symbol-overlay
+(use-package!  symbol-overlay
   :defer
   )
