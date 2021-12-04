@@ -15,7 +15,7 @@
 (define-key global-map (kbd "C-c t") 'org-capture)
 (define-key global-map (kbd "<f8>") 'zilongshanren/show-current-buffer-major-mode)
 
-(global-set-key (kbd "C-c i e") 'spacemacs/auto-yasnippet-expand)
+;; (global-set-key (kbd "C-c i e") 'spacemacs/auto-yasnippet-expand)
 ;; http://emacs.stackexchange.com/questions/220/how-to-bind-c-i-as-different-from-tab
 ;; (define-key input-decode-map [?\C-i] [C-i])
 ;; (define-key evil-normal-state-map (kbd "C-i") 'evil-jump-forward)

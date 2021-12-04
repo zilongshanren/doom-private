@@ -17,6 +17,8 @@
 (setq user-full-name "zilongshanren"
       user-mail-address "guanghui8827@gmail.com")
 
+
+
 (global-flycheck-mode -1)
 
 ;; (add-hook 'emacs-lisp-mode-hook #'(lambda ()

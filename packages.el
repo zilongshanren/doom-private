@@ -60,3 +60,4 @@
 (package! discover-my-major)
 (package! visual-regexp)
 (package! visual-regexp-steroids)
+(package! youdao-dictionary)
