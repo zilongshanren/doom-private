@@ -204,6 +204,14 @@
   :config
   (org-super-agenda-mode))
 
+(after! org-agenda
+  ;; keybindings
+  (map! :map org-agenda-mode-map
+        :localleader
+        "d s" 'org-schedule)
+
+  (evil-make-overriding-map org-agenda-mode-map 'normal)
+)
 
 
 ;; (after! org-superstar
@@ -224,10 +232,6 @@
     (setq org-agenda-dir "~/org-notes/")
     (setq deft-dir  "~/org-notes/")
 
-    ;; keybindings
-    (map! :map org-agenda-mode-map
-          :localleader
-          "d s" 'org-schedule)
 
     ;; https://emacs-china.org/t/ox-hugo-auto-fill-mode-markdown/9547/4
     (defadvice org-hugo-paragraph (before org-hugo-paragraph-advice
