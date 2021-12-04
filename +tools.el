@@ -98,3 +98,14 @@
     (define-key endless/mc-map "l" #'mc/edit-lines)
     (define-key endless/mc-map "\C-a" #'mc/edit-beginnings-of-lines)
     (define-key endless/mc-map "\C-e" #'mc/edit-ends-of-lines)))
+
+(use-package! cal-china-x
+  :defer
+  :config
+  (progn
+    (setq mark-holidays-in-calendar t)
+    (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
+    (setq cal-china-x-general-holidays '((holiday-lunar 1 15 "元宵节")))
+    (setq calendar-holidays
+          (append cal-china-x-important-holidays
+                  cal-china-x-general-holidays))))

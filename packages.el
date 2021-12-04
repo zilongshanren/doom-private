@@ -61,3 +61,5 @@
 (package! visual-regexp)
 (package! visual-regexp-steroids)
 (package! youdao-dictionary)
+(package! cal-china-x)
+(package! org-super-agenda)
