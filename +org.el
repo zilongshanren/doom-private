@@ -427,7 +427,7 @@ object (e.g., within a comment).  In these case, you need to use
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Org clock
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+    (setq org-agenda-start-day "+0d")
     ;; Change task state to STARTED when clocking in
     (setq org-clock-in-switch-to-state "STARTED")
     ;; Save clock data and notes in the LOGBOOK drawer
@@ -601,6 +601,8 @@ object (e.g., within a comment).  In these case, you need to use
 
     ;; C-n for the next org agenda item
     (define-key org-agenda-mode-map (kbd "C-p") 'org-agenda-previous-item)
+    (evil-add-hjkl-bindings org-agenda-mode-map 'emacs)
+
 
     (with-eval-after-load 'org-agenda
       (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
