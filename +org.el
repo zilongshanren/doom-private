@@ -9,40 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/org-notes/")
-
-(defvar org-agenda-dir ""
-  "gtd org files location")
-
-(defvar deft-dir ""
-  "deft org files locaiton")
-
-(defvar blog-admin-dir ""
-  "blog-admin files location")
-
-(if IS-WINDOWS
-    (setq
-     org-agenda-dir "d:/org-notes"
-     deft-dir "d:/org-notes"
-     blog-admin-dir "d:/zilongshanren.com")
-  (setq
-   org-agenda-dir "~/org-notes"
-   deft-dir "~/org-notes"
-   blog-admin-dir "~/zilongshanren.com"))
-
- ;; https://emacs-china.org/t/ox-hugo-auto-fill-mode-markdown/9547/4
-  (defadvice org-hugo-paragraph (before org-hugo-paragraph-advice
-                                        (paragraph contents info) activate)
-    "Join consecutive Chinese lines into a single long line without
-unwanted space when exporting org-mode to hugo markdown."
-    (let* ((origin-contents (ad-get-arg 1))
-           (fix-regexp "[[:multibyte:]]")
-           (fixed-contents
-            (replace-regexp-in-string
-             (concat
-              "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
-      (ad-set-arg 1 fixed-contents)))
 
 (require 'cl-lib)
 
@@ -227,6 +193,41 @@ unwanted space when exporting org-mode to hugo markdown."
     (setq org-ellipsis " ▼ "))
 (after! org
   (progn
+    ;; If you intend to use org, it is recommended you change this!
+    (setq org-directory "~/org-notes/")
+
+    (defvar org-agenda-dir ""
+      "gtd org files location")
+
+    (defvar deft-dir ""
+      "deft org files locaiton")
+
+    (defvar blog-admin-dir ""
+      "blog-admin files location")
+
+    (if IS-WINDOWS
+        (setq
+         org-agenda-dir "d:/org-notes"
+         deft-dir "d:/org-notes"
+         blog-admin-dir "d:/zilongshanren.com")
+      (setq
+       org-agenda-dir "~/org-notes"
+       deft-dir "~/org-notes"
+       blog-admin-dir "~/zilongshanren.com"))
+
+    ;; https://emacs-china.org/t/ox-hugo-auto-fill-mode-markdown/9547/4
+    (defadvice org-hugo-paragraph (before org-hugo-paragraph-advice
+                                          (paragraph contents info) activate)
+      "Join consecutive Chinese lines into a single long line without
+unwanted space when exporting org-mode to hugo markdown."
+      (let* ((origin-contents (ad-get-arg 1))
+             (fix-regexp "[[:multibyte:]]")
+             (fixed-contents
+              (replace-regexp-in-string
+               (concat
+                "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
+        (ad-set-arg 1 fixed-contents)))
+
     ;; disable < auto pair for org mode
     ;; disable {} auto pairing in electric-pair-mode for web-mode
     (add-hook
