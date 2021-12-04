@@ -12,6 +12,12 @@
 (defvar blog-admin-dir ""
       "blog-admin files location")
 
+(if IS-WINDOWS
+    (setq
+     blog-admin-dir "d:/zilongshanren.com")
+  (setq
+   blog-admin-dir "~/zilongshanren.com"))
+
 (require 'cl-lib)
 
 (defun zilongshanren/directory-parent (directory)
@@ -205,16 +211,10 @@
     (defvar deft-dir ""
       "deft org files locaiton")
 
+    (setq org-agenda-dir "~/org-notes/")
+    (setq deft-dir  "~/org-notes/")
 
-    (if IS-WINDOWS
-        (setq
-         org-agenda-dir "d:/org-notes"
-         deft-dir "d:/org-notes"
-         blog-admin-dir "d:/zilongshanren.com")
-      (setq
-       org-agenda-dir "~/org-notes"
-       deft-dir "~/org-notes"
-       blog-admin-dir "~/zilongshanren.com"))
+
 
     ;; https://emacs-china.org/t/ox-hugo-auto-fill-mode-markdown/9547/4
     (defadvice org-hugo-paragraph (before org-hugo-paragraph-advice

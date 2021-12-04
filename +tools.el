@@ -125,7 +125,7 @@
     (prodigy-define-service
       :name "Hugo Server"
       :command "hugo"
-      :args '("server" "-D" "--navigateToChanged")
+      :args '("server" "-D" "--navigateToChanged" "-t" "even")
       :cwd blog-admin-dir
       :tags '(hugo server)
       :kill-signal 'sigkill
@@ -134,7 +134,7 @@
     (prodigy-define-service
       :name "hugo Deploy"
       :command "bash"
-      :args '("./deploy.sh" )
+      :args '("./deploy.sh")
       :cwd blog-admin-dir
       :tags '(hugo deploy)
       :kill-signal 'sigkill
@@ -145,5 +145,4 @@
     ;; ;; add watch for prodigy-view-mode buffer change event
     ;; (add-hook 'prodigy-view-mode-hook
     ;;           #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab)))
-
     ))
