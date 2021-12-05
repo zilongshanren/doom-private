@@ -58,8 +58,23 @@
       "TAB" #'spacemacs/alternate-buffer
       "v" #'er/expand-region
 
-      (:prefix "r"
-       "i" #'vertico-repeat)
+
+      (:prefix "b"
+       "h" #'+doom-dashboard/open)
+
+      (:prefix "e"
+       "l" #'flycheck-list-errors
+       "n" #'next-error
+       "p" #'previous-error)
+
+      (:prefix-map ("f" . "file")
+       "j" #'dired-jump
+       (:prefix-map ("e" . "env")
+        "d" 'doom/goto-private-config-file
+        "i" 'doom/find-file-in-emacsd))
+
+      (:prefix "g"
+       "s" #'magit-status)
 
       (:prefix "h"
        "dk" 'describe-key
@@ -68,29 +83,19 @@
        "h" 'zilongshanren/highlight-dwim
        "c" 'zilongshanren/clearn-highlight)
 
-      (:prefix "o"
-       "o" #'zilongshanren/helm-hotspots)
-
-      (:prefix "b"
-       "h" #'+doom-dashboard/open)
-
-      (:prefix-map ("f" . "file")
-       "j" #'dired-jump
-       (:prefix-map ("e" . "env")
-        "d" 'doom/goto-private-config-file
-        "i" 'doom/find-file-in-emacsd))
-
-      (:prefix "e"
-       "l" #'flycheck-list-errors
-       "n" #'next-error
-       "p" #'previous-error)
-
-
       (:prefix "n"
        "l" #'evil-ex-nohighlight)
 
-      (:prefix "g"
-       "s" #'magit-status)
+
+      (:prefix "o"
+       "o" #'zilongshanren/helm-hotspots)
+
+
+      (:prefix "r"
+       "i" #'vertico-repeat)
+
+      (:prefix "s"
+       "j" #'consult-imenu)
 
       (:prefix "w"
        "/" #'evil-window-vsplit
