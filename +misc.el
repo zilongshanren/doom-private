@@ -303,3 +303,4 @@ with options to run in the shell.")
                                             ("8str" "\\([^\"]+?\\)\"")))
 
 
+(setq process-coding-system-alist (cons '("es" . (gbk .gbk)) process-coding-system-alist))
