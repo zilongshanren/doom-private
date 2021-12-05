@@ -1,6 +1,10 @@
 #+TITLE: Todo
 ** migrate package
-- [ ] visual-regexp
-- [ ] visual-regexp-steroids
-- [ ] discover-my-major
+- [X] visual-regexp
+- [X] visual-regexp-steroids
+- [X] discover-my-major
 - [X] flyspell-correct
+- [ ] emacs-rime
+- [ ] all-keybingins
+- [ ] embark-become
+- [ ] programming languages, especially lsp-mode for rust and cc.
