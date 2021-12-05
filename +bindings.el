@@ -95,7 +95,8 @@
        "i" #'vertico-repeat)
 
       (:prefix "s"
-       "j" #'consult-imenu)
+       "j" #'consult-imenu
+       "p" #'consult-ripgrep)
 
       (:prefix "w"
        "/" #'evil-window-vsplit
@@ -119,3 +120,5 @@
        :ne "J" 'counsel-find-file
        :ne "f" 'zilongshanren/open-file-with-projectile-or-counsel-git
        :ne ")" 'dired-omit-mode))
+
+(define-key minibuffer-local-map (kbd "C-'") #'embark-become)

@@ -13,3 +13,9 @@
 (load! "+tools")
 
 (setq doom-localleader-key ",")
+
+(defun eh-orderless-regexp (orig_func component)
+  (let ((result (funcall orig_func component)))
+    (pyim-cregexp-build result)))
+
+(advice-add 'orderless-regexp :around #'eh-orderless-regexp)
