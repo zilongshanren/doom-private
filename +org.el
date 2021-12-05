@@ -589,20 +589,21 @@ object (e.g., within a comment).  In these case, you need to use
           (expand-file-name "~/.doom.d/plantuml.jar"))
     (setq org-ditaa-jar-path "~/.doom.d/ditaa.jar")
 
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((perl . t)
-       (ruby . t)
-       (shell . t)
-       (dot . t)
-       (typescript . t)
-       (js . t)
-       (latex .t)
-       (python . t)
-       (emacs-lisp . t)
-       (plantuml . t)
-       (C . t)
-       (ditaa . t)))
+    ;; https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#configuring-doom
+    ;; (org-babel-do-load-languages
+    ;;  'org-babel-load-languages
+    ;;  '((perl . t)
+    ;;    (ruby . t)
+    ;;    (shell . t)
+    ;;    (dot . t)
+    ;;    (typescript . t)
+    ;;    (js . t)
+    ;;    (latex .t)
+    ;;    (python . t)
+    ;;    (emacs-lisp . t)
+    ;;    (plantuml . t)
+    ;;    (C . t)
+    ;;    (ditaa . t)))
 
     (progn
       (require 'cal-china-x)
