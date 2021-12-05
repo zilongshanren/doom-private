@@ -92,7 +92,8 @@
 
 
       (:prefix "r"
-       "i" #'vertico-repeat)
+       "i" #'vertico-repeat
+       "y" #'consult-yank-from-kill-ring)
 
       (:prefix "s"
        "j" #'consult-imenu

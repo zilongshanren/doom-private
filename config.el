@@ -19,3 +19,4 @@
     (pyim-cregexp-build result)))
 
 (advice-add 'orderless-regexp :around #'eh-orderless-regexp)
+;; use #$#pyim to search chinese and also es.exe locate
