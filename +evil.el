@@ -95,7 +95,7 @@
     (setq evil-insert-state-cursor '("chartreuse3" box))
     (define-key evil-insert-state-map (kbd "C-z") 'evil-emacs-state)))
 
-;; Utility functions
+;;;###autoload
 (defun bb/define-key (keymap &rest bindings)
   (declare (indent 1))
   (while bindings

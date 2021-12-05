@@ -79,26 +79,9 @@
 (setq large-file-warning-threshold 100000000)
 ;;http://batsov.com/emacsredux/blog/2015/05/09/emacs-on-os-x/
 
-;; cleanup recent files
-(defun zilongshanren/cleanup-recentf ()
-  (progn
-    (and (fboundp 'recentf-cleanup)
-         (recentf-cleanup))))
 
 (add-hook 'kill-emacs-hook #'zilongshanren/cleanup-recentf)
 
-;; http://emacs.stackexchange.com/questions/13970/fixing-double-capitals-as-i-type
-(defun dcaps-to-scaps ()
-  "Convert word in DOuble CApitals to Single Capitals."
-  (interactive)
-  (and (= ?w (char-syntax (char-before)))
-       (save-excursion
-         (and (if (called-interactively-p)
-                  (skip-syntax-backward "w")
-                (= -3 (skip-syntax-backward "w")))
-              (let (case-fold-search)
-                (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
-              (capitalize-word 1)))))
 
 (define-minor-mode dubcaps-mode
   "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
@@ -109,42 +92,21 @@ Single Capitals as you type."
       (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
     (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
 
-;; https://emacs-china.org/t/advice/7566
-(defun chunyang-advice-remove-button (function)
-  "Add a button to remove advice."
-  (when (get-buffer "*Help*")
-    (with-current-buffer "*Help*"
-      (save-excursion
-        (goto-char (point-min))
-        ;; :around advice: ‘shell-command--shell-command-with-editor-mode’
-        (while (re-search-forward "^:[-a-z]+ advice: [‘'`]\\(.+\\)[’'']$" nil t)
-          (let ((advice (intern-soft (match-string 1))))
-            (when (and advice (fboundp advice))
-              (let ((inhibit-read-only t))
-                (insert " » ")
-                (insert-text-button
-                 "Remove"
-                 'action
-                 ;; In case lexical-binding is off
-                 `(lambda (_)
-                    (message "Removing %s of advice from %s" ',function ',advice)
-                    (advice-remove ',function #',advice)
-                    (revert-buffer nil t))
-                 'follow-link t)))))))))
 
 (advice-add 'describe-function-1 :after #'chunyang-advice-remove-button)
 
-(defun zilong-ag-edit (function)
-  (when (get-buffer "*helm-ag-edit*")
-    (kill-buffer "*helm-ag-edit*"))
-  (if (not (= (count-windows) 2))
-      (progn
-        (split-window-right))))
+;; (defun zilong-ag-edit (function)
+;;   (when (get-buffer "*helm-ag-edit*")
+;;     (kill-buffer "*helm-ag-edit*"))
+;;   (if (not (= (count-windows) 2))
+;;       (progn
+;;         (split-window-right))))
 
 ;; (defun zilong-after-ag-edit (function)
 ;;   (ivy-occur-grep-mode))
 
-(advice-add 'helm-ag--edit :before #'zilong-ag-edit)
+;; (advice-add 'helm-ag--edit :before #'zilong-ag-edit)
+
 ;; (advice-add 'helm-ag--edit :after #'zilong-after-ag-edit)
 (setq auto-coding-regexp-alist
       (delete (rassoc 'utf-16be-with-signature auto-coding-regexp-alist)
@@ -194,14 +156,6 @@ Single Capitals as you type."
                   (make-directory dir t))))))
 
 
-(defun spacemacs/check-large-file ()
-  (when (> (buffer-size) 500000)
-    (progn (fundamental-mode)
-           (hl-line-mode -1)))
-  (if (and (executable-find "wc")
-           (> (string-to-number (shell-command-to-string (format "wc -l %s" (buffer-file-name))))
-              5000))
-      nil))
 
 (add-hook 'find-file-hook 'spacemacs/check-large-file)
 
@@ -219,10 +173,6 @@ Single Capitals as you type."
               (set (make-local-variable 'electric-pair-mode) nil)))
 
 ;; http://trey-jackson.blogspot.com/2010/04/emacs-tip-36-abort-minibuffer-when.html
-(defun zilongshanren/stop-using-minibuffer ()
-  "kill the minibuffer"
-  (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
-    (abort-recursive-edit)))
 
 (add-hook 'mouse-leave-buffer-hook 'zilongshanren/stop-using-minibuffer)
 
@@ -245,20 +195,9 @@ Single Capitals as you type."
 ;;   (setq w32-pipe-read-delay 0.5))
 
 ;; FIXME: --vimgrep will break ivy-occur with wgrep
-(setq counsel-async-split-string-re "\r?\n")
+;; (setq counsel-async-split-string-re "\r?\n")
 ;; (setq counsel-ag-base-command  "ag --vimgrep --nocolor --nogroup %s")
 
-(defvar spacemacs--counsel-commands
-  '(;; --line-number forces line numbers (disabled by default on windows)
-    ;; no --vimgrep because it adds column numbers that wgrep can't handle
-    ;; see https://github.com/syl20bnr/spacemacs/pull/8065
-    ("rg" . "rg  --smart-case --ignore-file '.rgignore' --no-heading --color never --line-number --max-columns 220 %s %S .")
-    ("ag" . "ag --nocolor --nogroup %s %S .")
-    ("pt" . "pt -e --nocolor --nogroup %s %S .")
-    ("ack" . "ack --nocolor --nogroup %s %S .")
-    ("grep" . "grep -nrP %s %S ."))
-  "An alist of search commands and their corresponding commands
-with options to run in the shell.")
 
 ;; search chinse must add this line
 ;; https://emacs-china.org/t/emacs-helm-ag/6764
@@ -267,9 +206,6 @@ with options to run in the shell.")
   (modify-coding-system-alist 'process "rg" '(utf-8 . utf-8)))
 
 
-
-
-(setq counsel-git-cmd "git ls-files --full-name -- \":!:*.js.meta\" \":!:*.meta\"")
 
 (define-abbrev-table 'global-abbrev-table '(
 
