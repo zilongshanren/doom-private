@@ -32,6 +32,7 @@
 
 (global-set-key (kbd "s-l") 'goto-line)
 (global-set-key (kbd "s-d") 'zilongshanren/my-mc-mark-next-like-this)
+(global-set-key (kbd "C-c l") 'zilongshanren/insert-chrome-current-tab-url)
 (global-set-key (kbd "<f5>") 'zilongshanren/run-current-file)
 
 
@@ -92,7 +93,8 @@
 
 
       (:prefix "r"
-       "i" #'vertico-repeat)
+       "i" #'vertico-repeat
+       "y" #'consult-yank-from-kill-ring)
 
       (:prefix "s"
        "j" #'consult-imenu
