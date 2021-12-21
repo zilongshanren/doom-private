@@ -137,3 +137,19 @@
     ;; (add-hook 'prodigy-view-mode-hook
     ;;           #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab)))
     ))
+
+(use-package pyim)
+
+(use-package rime
+  :init
+  (setq default-input-method "rime")
+  :config
+  (progn (set-face-attribute 'rime-default-face nil :foreground "#839496" :background "#073642")
+         (setq rime-librime-root (expand-file-name "librime/dist" doom-private-dir))
+         (setq rime-show-candidate 'posframe)
+         (setq rime-share-data-dir "~/Library/Rime")
+         (setq rime-user-data-dir "~/Library/Rime")
+         (setq rime-posframe-properties
+               (list :background-color "#073642"
+                     :foreground-color "#839496"
+                     :internal-border-width 1))))

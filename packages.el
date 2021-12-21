@@ -56,6 +56,7 @@
 (package! evil-org :disable t)
 (package! evil-org-agenda :disable t)
 
+
 (package! helm)
 
 (package! highlight-global :recipe (:host github :repo "glen-dai/highlight-global"))
@@ -66,3 +67,4 @@
 (package! youdao-dictionary)
 (package! cal-china-x)
 (package! org-super-agenda)
+(package! rime)
