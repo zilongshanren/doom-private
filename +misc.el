@@ -239,4 +239,4 @@ Single Capitals as you type."
                                             ("8str" "\\([^\"]+?\\)\"")))
 
 
-(setq process-coding-system-alist (cons '("es" . (gbk .gbk)) process-coding-system-alist))
+(setq process-coding-system-alist (cons '("es" . (gbk . gbk)) process-coding-system-alist))
