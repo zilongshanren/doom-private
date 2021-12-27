@@ -10,6 +10,7 @@
 (global-set-key [(shift return)] 'zilongshanren/smart-open-line)
 (global-set-key (kbd "s-/") 'hippie-expand)
 (global-set-key (kbd "C-c a") 'org-agenda)
+(define-key global-map (kbd "s-e") 'rime-inline-ascii)
 (define-key global-map (kbd "C-c y") 'youdao-dictionary-search-at-point+)
 (define-key global-map (kbd "<f9>") 'org-capture)
 (define-key global-map (kbd "C-c t") 'org-capture)

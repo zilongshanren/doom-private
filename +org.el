@@ -457,6 +457,7 @@ object (e.g., within a comment).  In these case, you need to use
 
     (add-hook 'org-mode-hook '(lambda ()
                                 ;; keybinding for editing source code blocks
+                                (company-mode -1)
                                 ;; keybinding for inserting code blocks
                                 (local-set-key (kbd "C-c i s")
                                                'zilongshanren/org-insert-src-block)))
