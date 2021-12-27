@@ -92,6 +92,8 @@
       (:prefix "o"
        "o" #'zilongshanren/helm-hotspots)
 
+      (:prefix "p"
+       "f" #'counsel-git)
 
       (:prefix "r"
        "i" #'vertico-repeat

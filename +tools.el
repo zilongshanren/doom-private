@@ -153,3 +153,8 @@
                (list :background-color "#073642"
                      :foreground-color "#839496"
                      :internal-border-width 1))))
+
+
+(advice-add 'ispell-lookup-words :around
+            (lambda (orig &rest args)
+              (shut-up (apply orig args))))

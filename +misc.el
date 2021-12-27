@@ -19,6 +19,7 @@
 
 
 
+
 (global-flycheck-mode -1)
 
 ;; (add-hook 'emacs-lisp-mode-hook #'(lambda ()
@@ -240,3 +241,7 @@ Single Capitals as you type."
 
 
 (setq process-coding-system-alist (cons '("es" . (gbk . gbk)) process-coding-system-alist))
+
+
+(after! text-mode
+  (set-company-backend! 'text-mode 'company-dabbrev 'company-dabbrev-code))
